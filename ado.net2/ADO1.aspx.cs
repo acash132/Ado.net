@@ -62,6 +62,30 @@ namespace ado.net2
             con.Close();
         }
 
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Server=DESKTOP-B1PDELG;Initial Catalog=UsersDB;Trusted_Connection=true";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                // Using LIKE with wildcard % allows for partial matches
+                string query = "SELECT * FROM UsersData WHERE Username LIKE @SearchTerm ORDER BY Username DESC";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    // Using Parameters prevents SQL Injection
+                    cmd.Parameters.AddWithValue("@SearchTerm", "%" + txtSearch.Text.Trim() + "%");
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+
+                    grdData.DataSource = ds;
+                    grdData.DataBind();
+                }
+            }
+        }
+
 
     }
 }

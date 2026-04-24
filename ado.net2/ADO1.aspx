@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+        <link href="Style.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -14,21 +15,26 @@
         <div class="input-group">
             <asp:Label ID="lblUsername" runat="server" Text="Username"></asp:Label>
             <asp:TextBox ID="txtUsername" runat="server" placeholder="Enter username"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="ReqUname" runat="server" ErrorMessage="Pls enter Username" ControlToValidate="txtUsername"  ForeColor="Red"> </asp:RequiredFieldValidator>
-        </div>
+<asp:RequiredFieldValidator ID="ReqUname" runat="server" 
+        ControlToValidate="txtUsername" 
+        ValidationGroup="UserForm" 
+        ErrorMessage="Pls enter Username" ForeColor="Red" />        </div>
 
         <div class="input-group">
             <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Enter password"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="ReqPwd" runat="server" ErrorMessage="Pls enter PassWord" ControlToValidate="txtPassword" ForeColor="Purple"> </asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="ReqPwd" runat="server" 
+                ControlToValidate="txtPassword" 
+                ValidationGroup="UserForm" 
+                ErrorMessage="Pls enter PassWord" ForeColor="Purple"> </asp:RequiredFieldValidator>
 
         
         </div>
 
         <div class="button-grid">
-            <asp:Button ID="btnSubmit" runat="server" Text="Create" OnClick="btnSubmit_Click" CssClass="btn btn-primary" />
-            <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="btn btn-secondary" />
-            <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" CssClass="btn btn-danger" OnClientClick="return confirmDelete();" />
+            <asp:Button ID="btnSubmit" runat="server" Text="Create" OnClick="btnSubmit_Click" CssClass="btn btn-primary" ValidationGroup="UserForm" />
+            <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="btn btn-secondary" ValidationGroup="UserForm" />
+            <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" CssClass="btn btn-danger" OnClientClick="return confirmDelete();" ValidationGroup="UserForm" />
         </div>
     </div>
 
