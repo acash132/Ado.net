@@ -38,6 +38,7 @@ namespace ado.net2
             con.Close();
         }
 
+       
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection("Server=DESKTOP-B1PDELG;Initial Catalog=UsersDB;Trusted_Connection=true");
