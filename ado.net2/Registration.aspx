@@ -49,17 +49,17 @@
             <div class="input-group">
     <label>Email Address</label>
     <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="example@mail.com"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvEmail" runat="server" CssClass="error" ErrorMessage="Email is required" ControlToValidate="txtEmail" Display="Dynamic"></asp:RequiredFieldValidator>
-    <asp:RegularExpressionValidator ID="revEmail" runat="server" CssClass="error" ErrorMessage="Invalid email format" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"></asp:RegularExpressionValidator>
+    <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ValidationGroup="UserForm" CssClass="error" ErrorMessage="Email is required" ControlToValidate="txtEmail" Display="Dynamic"></asp:RequiredFieldValidator>
+    <asp:RegularExpressionValidator ID="revEmail" runat="server" ValidationGroup="UserForm" CssClass="error" ErrorMessage="Invalid email format" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"></asp:RegularExpressionValidator>
 </div>
 
 <div class="input-group">
     <label>Mobile Number</label>
     <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="10-digit number"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="rfvMobile" runat="server" CssClass="error" ErrorMessage="Mobile is required" ControlToValidate="txtMobile" Display="Dynamic"></asp:RequiredFieldValidator>
-    <asp:RegularExpressionValidator ID="revMobile" runat="server" CssClass="error" ErrorMessage="Enter 10 digits" ControlToValidate="txtMobile" ValidationExpression="^[0-9]{10}$" Display="Dynamic"></asp:RegularExpressionValidator>
+    <asp:RequiredFieldValidator ID="rfvMobile" runat="server"  ValidationGroup="UserForm" CssClass="error" ErrorMessage="Mobile is required" ControlToValidate="txtMobile" Display="Dynamic"></asp:RequiredFieldValidator>
+    <asp:RegularExpressionValidator ID="revMobile" runat="server" ValidationGroup="UserForm" CssClass="error" ErrorMessage="Enter 10 digits" ControlToValidate="txtMobile" ValidationExpression="^[0-9]{10}$" Display="Dynamic"></asp:RegularExpressionValidator>
 </div>
-                <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />
+                <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" ValidationGroup="UserForm" />
                 <br />
                 <asp:Label ID="lblMessage" runat="server" CssClass="message"></asp:Label>
 
