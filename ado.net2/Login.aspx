@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ADO1.aspx.cs" Inherits="ado.net2.ADO1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ado.net2.ADO1" %>
 
 <!DOCTYPE html>
 
