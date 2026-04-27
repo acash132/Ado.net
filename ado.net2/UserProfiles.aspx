@@ -12,7 +12,7 @@
         <div class="container">
             
             <div class="card">
-                <h2>User Registration</h2>
+                <h2>👤 User Registration</h2>
                 <div class="form-grid">
                     <div class="form-group">
                         <label>First Name</label>

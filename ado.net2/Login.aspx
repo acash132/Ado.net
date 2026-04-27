@@ -45,9 +45,49 @@
         </div>
         
         <div class="grid-wrapper">
-            <asp:GridView ID="grdData" runat="server" CssClass="styled-grid" GridLines="None" AutoGenerateColumns="true">
+            <asp:GridView ID="grdData" runat="server" CssClass="styled-grid" GridLines="None" DataKeyNames="UID"
+                AutoGenerateColumns="False"
+                PageSize="3" AllowPaging="true" OnPageIndexChanging="grdData_PageIndexChanging" OnRowCancelingEdit="grdData_RowCancelingEdit" OnRowEditing="grdData_RowEditing" OnRowUpdating="grdData_RowUpdating" OnRowDeleting="grdData_RowDeleting">
                 <HeaderStyle CssClass="grid-header" />
                 <RowStyle CssClass="grid-row" />
+                <Columns>
+                    <asp:TemplateField HeaderText="Username">
+                        <ItemTemplate>
+                            <asp:Label ID="lblUsername" runat="server" Text='<%# Eval("Username") %>'></asp:Label>
+                        </ItemTemplate>
+
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtUsername" runat="server" Text='<%# Bind("Username") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+
+                     <asp:TemplateField HeaderText="Password">
+                         <ItemTemplate>
+                             <asp:Label ID="lblPassword" runat="server" Text='<%# Eval("Password") %>'></asp:Label>
+                         </ItemTemplate>
+
+                         <EditItemTemplate>
+                             <asp:TextBox ID="txtPassword" runat="server" Text='<%# Bind("Password") %>'></asp:TextBox>
+                         </EditItemTemplate>
+                     </asp:TemplateField>
+
+                     <asp:TemplateField HeaderText="Actions">
+                         <ItemTemplate>
+                             
+                            <asp:Button ID="btnDelete" runat="server" Text='Delete' CommandName="Delete"></asp:Button>
+                            <asp:Button ID="btnEdit" runat="server" Text='Edit' CommandName="Edit"></asp:Button>
+                         </ItemTemplate>
+
+                         <EditItemTemplate>
+                             
+                             <asp:Button ID="btnUpdate" runat="server" Text='Update' CommandName="Update"></asp:Button>
+                            <asp:Button ID="btnCancel" runat="server" Text='Cancel' CommandName="Cancel"></asp:Button>
+
+                         </EditItemTemplate>
+
+                     </asp:TemplateField>
+                    </Columns>
+
             </asp:GridView>
         </div>
     </div>
@@ -56,8 +96,8 @@
 <script>
     // Client-side confirmation for deletion
     function confirmDelete() {
-]        return confirm("Are you sure you want to delete this record? This action cannot be undone.");
- ]   }
+        return confirm("Are you sure you want to delete this record? This action cannot be undone.");
+    }
 </script>
     </form>
 </body>

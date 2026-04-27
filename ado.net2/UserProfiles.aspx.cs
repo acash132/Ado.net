@@ -24,7 +24,7 @@ namespace ado.net2
                     ddlDay.Items.Add(new ListItem(i.ToString(), i.ToString()));
                 }
 
-                // 2. Populate the Year DropDown (e.g., 1950 to 2026)
+                // 2. Populate the Year DropDown (Ex:1950 to 2026)
                 int currentYear = DateTime.Now.Year;
                 for (int i = currentYear; i >= 1950; i--)
                 {
@@ -292,7 +292,7 @@ namespace ado.net2
 
                 con.Open();
                 int rows = cmd.ExecuteNonQuery();
-                if (rows > 0)
+                if (rows > 0) 
                 {
                     lblDisplay.Text = "User deleted.";
                     ClearForm();
