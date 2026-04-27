@@ -130,34 +130,56 @@ namespace ado.net2
 
         }
 
-        protected void grdData_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            // 1. Get the UID from the DataKeys collection using the row index
-            // Note: This requires DataKeyNames="UID" in your ASPX GridView definition
+        protected void grdData_RowDeleting(object sender, GridViewDeleteEventArgs e) {
+
+            SqlConnection con = new SqlConnection("Server=DESKTOP-B1PDELG;Initial Catalog=UsersDB;Trusted_Connection=true");
+            con.Open();
+            GridViewRow grd = grdData.Rows[e.RowIndex];
+            int UID = Convert.ToInt32(grdData.DataKeys[e.RowIndex].Value);
             
-            int uid = Convert.ToInt32(grdData.DataKeys[e.RowIndex].Value);
-
-            // 2. Define your connection string
-            string connectionString = "Server=DESKTOP-B1PDELG;Initial Catalog=UsersDB;Trusted_Connection=true";
-
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                // 3. Create the DELETE command with a parameter to prevent SQL Injection
-                string query = "DELETE FROM UsersData1 WHERE UID = @UID";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@UID", uid);
-
-                    // 4. Open connection, execute, and close
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                }
-            }
-
-            // 5. Refresh the GridView to reflect the changes
+            SqlCommand cmd = new SqlCommand("DELETE FROM UsersData1 WHERE UID = @UID", con);
+            
+            cmd.Parameters.AddWithValue("@UID", UID);
+            cmd.ExecuteNonQuery();
+            con.Close();
             BindGrid();
+
+
         }
+
+
+
+
+        
+        
+        //protected void grdData_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        //{
+        //    // 1. Get the UID from the DataKeys collection using the row index
+        //    // Note: This requires DataKeyNames="UID" in your ASPX GridView definition
+
+        //    //int uid = Convert.ToInt32(grdData.DataKeys[e.RowIndex].Value);
+
+        //    // 2. Define your connection string
+        //    string connectionString = "Server=DESKTOP-B1PDELG;Initial Catalog=UsersDB;Trusted_Connection=true";
+
+        //    using (SqlConnection con = new SqlConnection(connectionString))
+        //    {
+        //        // 3. Create the DELETE command with a parameter to prevent SQL Injection
+        //        string query = "DELETE FROM UsersData1 WHERE UID = @UID";
+
+        //        using (SqlCommand cmd = new SqlCommand(query, con))
+        //        {
+        //            cmd.Parameters.AddWithValue("@UID", uid);
+
+        //            // 4. Open connection, execute, and close
+        //            con.Open();
+        //            cmd.ExecuteNonQuery();
+        //            con.Close();
+        //        }
+        //    }
+
+        //    // 5. Refresh the GridView to reflect the changes
+        //    BindGrid();
+        //}
     }
 }
