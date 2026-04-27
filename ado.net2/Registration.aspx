@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
         <div class="form-container">
             <h2>Create Account</h2>
-            <p class="subtitle">Join our community today</p>
+            <p class="subtitle">Join C# community today</p>
 
             <div class="input-group">
                 <asp:Label ID="lblUsername" runat="server" Text="Username"></asp:Label>
@@ -88,6 +88,24 @@
                 CssClass="btn-submit" />
             
             <asp:Label ID="lblMessage" runat="server" CssClass="status-message"></asp:Label>
+
+
+            <div class="form-container search-section">
+    <h3>Search Members</h3>
+    <div class="input-group">
+        <asp:TextBox ID="txtSearch" runat="server" placeholder="Search by username or email..."></asp:TextBox>
+        <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" CssClass="btn-submit" />
+    </div>
+
+    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="search-grid">
+        <Columns>
+            <asp:BoundField DataField="Username" HeaderText="Username" />
+            <asp:BoundField DataField="FullName" HeaderText="Name" />
+            <asp:BoundField DataField="Email" HeaderText="Email" />
+            <asp:BoundField DataField="Mobile" HeaderText="Mobile" />
+        </Columns>
+    </asp:GridView>
+</div>
         </div>
     </form>
 </body>

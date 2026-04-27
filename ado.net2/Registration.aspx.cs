@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -40,7 +41,41 @@ namespace ado.net2
         {
             txtfn.Text = txtEmail.Text = txtUsername.Text = txtPassword.Text = txtMobile.Text = "";
         }
-   }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindGrid(txtSearch.Text.Trim());
+        }
+
+        private void BindGrid(string searchTerm = "")
+        {
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-B1PDELG;Initial Catalog=RegisterDB;Trusted_Connection=true"))
+            {
+                // Use LIKE with wildcards for flexible searching
+                string query = "SELECT Username, FullName, Email, Mobile FROM Register1data";
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    query += " WHERE Username LIKE @search OR Email LIKE @search";
+                }
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    if (!string.IsNullOrEmpty(searchTerm))
+                    {
+                        cmd.Parameters.AddWithValue("@search", "%" + searchTerm + "%");
+                    }
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    gvUsers.DataSource = dt;
+                    gvUsers.DataBind();
+                }
+            }
+        }
+    }
 
         
     

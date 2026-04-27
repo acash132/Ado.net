@@ -40,7 +40,7 @@
 
     <div class="card grid-card">
         <div class="search-box">
-            <asp:TextBox ID="txtSearch" runat="server" placeholder="Search records..."></asp:TextBox>
+            <asp:TextBox ID="txtSearch" runat="server" placeholder="Search records"></asp:TextBox>
             <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" CssClass="btn btn-search" />
         </div>
         
@@ -56,8 +56,8 @@
 <script>
     // Client-side confirmation for deletion
     function confirmDelete() {
-        return confirm("Are you sure you want to delete this record? This action cannot be undone.");
-    }
+]        return confirm("Are you sure you want to delete this record? This action cannot be undone.");
+ ]   }
 </script>
     </form>
 </body>

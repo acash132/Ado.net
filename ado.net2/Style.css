@@ -4,7 +4,7 @@
     margin: 0;
     display: flex;
     justify-content: center;
-    padding: 40px 20px;
+    align-items: center;
 }
 
 .main-container {
